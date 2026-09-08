@@ -1,0 +1,44 @@
+spring:
+
+  application:
+    name: spring-ai-rag-simple
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spring-ai-rag-simple
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jdbc:
+    template:
+      fetch-size: 100
+
+  ai:
+
+    openai:
+
+      api-key: ${OPENAI_API_KEY}
+
+      embedding:
+
+        options:
+          model: text-embedding-3-small
+
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+
+server:
+  port: 8080
+
+logging:
+
+  level:
+
+    root: INFO
+
+    org.springframework.ai: DEBUG
+
+    org.springframework.jdbc.core: DEBUG
+
+    org.springframework.web: INFO
